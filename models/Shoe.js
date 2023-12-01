@@ -21,7 +21,8 @@ const ShoeSchema = new Schema({
     city: String,
     state: String,
     zipCode: Number,
-    country: String
+    country: String,
+    status: String
     },
 });
 
