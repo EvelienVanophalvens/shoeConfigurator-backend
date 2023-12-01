@@ -18,6 +18,20 @@ const createShoe = async (req, res) => {
     })  
 }
 
+//get all shoes async function
+const getAllShoes = async (req, res) => {
+    let shoes = await Shoe.find();
+    res.json({
+        status: 'success',
+        data: [
+            {
+                shoes: shoes
+            }
+        ]
+    })
+}
+
 //export the createShoe function
 module.exports.createShoe = createShoe;
+module.exports.getAllShoes = getAllShoes;
 
