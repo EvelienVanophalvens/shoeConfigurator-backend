@@ -11,6 +11,13 @@ const db = mongoose.connection;
 //check if the connection is successful
 db.on('error', console.error.bind(console, 'connection error:'));
 
+//import routers
+const shoesRouter = require('./routes/api/v1/shoes');
+app.use(express.json());
+
+//use the routers
+app.use('/api/v1/shoes', shoesRouter);
+
 
 
 app.listen(port, () => {
