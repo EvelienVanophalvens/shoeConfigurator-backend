@@ -4,8 +4,8 @@ const Shoe = require('../../../models/Shoe');
 //create a new shoe asyn function
 
 const createShoe = async (req, res) => {
-    let shoe = req.body.shoe;
-    let newShoe = new Shoe();
+    let shoe = req.body;
+    let newShoe = new Shoe(shoe);
     newShoe.shoe = shoe;
     await newShoe.save();
     res.json({
