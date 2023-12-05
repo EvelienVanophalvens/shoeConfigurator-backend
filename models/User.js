@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
-//make a schema for a user to signup 
-const UserSchema = new Schema({
-    firstname: String,
-    lastname: String,
-    email: String,
-    password: String,
-});
+const User = new Schema({});
 
-//export the model to use in index.js
-const User = mongoose.model('User', UserSchema);
-module.exports = User;
+User.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model('User', User);

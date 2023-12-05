@@ -5,10 +5,10 @@ const express = require('express');
 const router = express.Router();
 
 //require the controller
-const shoesController = require('../../../controllers/api/v1/users');
+const shoesController = require('../../../controllers/auth');
 
 //handle the post request coming to /api/v1/shoes
-router.post('/', shoesController.createUser);
+router.post('/signup', shoesController.signup);
 
 //handle the get request coming to /api/v1/shoes
 router.get('/', shoesController.loginUser);
