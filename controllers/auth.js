@@ -3,9 +3,11 @@ const User = require('../models/user');
 const passport = require('../passport/passport');
 
 const signup = async (req, res, next) => {
-    let username = req.body.username;
+    let email = req.body.email;
     let password = req.body.password;
-    const user = new User({username: username});
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    const user = new User({email: email, firstname: firstname, lastname: lastname});
     await user.setPassword(password);
     await user.save().then(result => {
         res.json({
