@@ -21,20 +21,22 @@ const signup = async (req, res, next) => {
     });
 }
 
-
-const loginUser = async (req, res) => {
-    let user = req.body;
-    let foundUser = await User.find(user);
-    res.json({
-        status: 'success',
-        data: [
-            {
-                user: foundUser
+const login = async (req, res, next) => {
+    const user = await User.authenticate()(req.body.email, req.body.password).then(result => {
+        res.json({
+            status: 'success',
+            data: {
+                user: result
             }
-        ]
-    })
-}
+        });
+    }).catch(err => {
+        res.json({
+            status: 'error',
+            message: err
+        })
+    });
+};
 
 //export the createUser function
 module.exports.signup = signup;
-module.exports.loginUser = loginUser;
+module.exports.login = login;

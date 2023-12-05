@@ -11,7 +11,7 @@ const shoesController = require('../../../controllers/auth');
 router.post('/signup', shoesController.signup);
 
 //handle the get request coming to /api/v1/shoes
-router.get('/', shoesController.loginUser);
+router.post('/login', shoesController.login);
 
 //export the router
 module.exports = router;
