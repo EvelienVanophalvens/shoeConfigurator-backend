@@ -7,7 +7,7 @@ const signup = async (req, res, next) => {
     let password = req.body.password;
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
-    const user = new User({email: email, firstname: firstname, lastname: lastname});
+    const user = new User({username: email, email: email, firstname: firstname, lastname: lastname});
     await user.setPassword(password);
     await user.save().then(result => {
         res.json({
@@ -16,7 +16,8 @@ const signup = async (req, res, next) => {
     }).catch(err => {
         res.json({
             status: 'error',
-            message: err
+            message: err,
+            data: req.body,
         })
     });
 }
