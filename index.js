@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
 const port = 3000;
+const passport = require('passport');
 
 const cors = require('cors');
 app.use(cors());
@@ -20,7 +21,7 @@ const usersRouter = require('./routes/api/v1/users');
 app.use(express.json());
 
 //use the routers
-app.use('/api/v1/shoes', shoesRouter);
+app.use('/api/v1/shoes', passport.authenticate('jwt', { session: false }) ,shoesRouter);
 app.use('/api/v1/users', usersRouter);
 
 
