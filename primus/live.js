@@ -10,8 +10,7 @@ module.exports.go = (server) => {
         spark.on('data', (data) => {
             console.log(data, 'data received');
             //send data back to all clients
-            primus.write(data); //all
-            //spark.write(data); //single
+            primus.write(data);
         });
 
 
