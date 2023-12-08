@@ -21,8 +21,10 @@ const ShoeSchema = new Schema({
     state: String,
     zipCode: Number,
     country: String,
-    status: String
+    status: String,
+    orderNumber: { type: Number, required: true, unique: true },
 });
+
 
 //export the model to use in index.js
 const Shoe = mongoose.model('Shoe', ShoeSchema);
