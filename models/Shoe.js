@@ -15,7 +15,7 @@ const ShoeSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    phoneNumber: Number,
+    phoneNumber: String,
     street: String,
     houseNumber: Number,
     city: String,
