@@ -1,20 +1,27 @@
 module.exports.go = (server) => {
     const Primus = require('primus');
-    const primus = new Primus(server, {  });
+    const primus = new Primus(server, { 
+        reconnect: {
+            max: Infinity // Number: The max delay before we try to reconnect.
+          , min: 500 // Number: The minimum delay before we try reconnect.
+        }
+     });
 
     //check if connection, then console.log
-    primus.on('connection', (spark) => {
+ primus.on('connection', (spark) => {
         console.log('connected');
 
-        //check if data is received, then console.log
-        spark.on('data', (data) => {
+        spark.on('data', async (data) => {
             console.log(data, 'data received');
-            //send data back to all clients
-            primus.write(data); //all
-            //spark.write(data); //single
+
+            // Send data back to all clients
+            primus.write(data);
         });
+    });
 
-
+    //check if disconnection, then console.log
+    primus.on('disconnection', (spark) => {
+        console.log('disconnected');
     });
 
 
