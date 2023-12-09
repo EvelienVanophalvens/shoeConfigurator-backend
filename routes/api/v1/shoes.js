@@ -1,5 +1,6 @@
 //require express
 const express = require('express');
+const passport = require('passport');
 
 //create a router
 const router = express.Router();
@@ -11,7 +12,7 @@ const shoesController = require('../../../controllers/api/v1/shoes');
 router.post('/', shoesController.createShoe);
 
 //handle the get request coming to /api/v1/shoes
-router.get('/', shoesController.getAllShoes);
+router.get('/',  passport.authenticate('jwt', { session: false }) , shoesController.getAllShoes);
 
 //export the router
 module.exports = router;

@@ -8,17 +8,20 @@ module.exports.go = (server) => {
      });
 
     //check if connection, then console.log
-    primus.on('connection', (spark) => {
+ primus.on('connection', (spark) => {
         console.log('connected');
 
-        //check if data is received, then console.log
-        spark.on('data', (data) => {
+        spark.on('data', async (data) => {
             console.log(data, 'data received');
-            //send data back to all clients
+
+            // Send data back to all clients
             primus.write(data);
         });
+    });
 
-
+    //check if disconnection, then console.log
+    primus.on('disconnection', (spark) => {
+        console.log('disconnected');
     });
 
 

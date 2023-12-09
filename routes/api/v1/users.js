@@ -5,13 +5,13 @@ const express = require('express');
 const router = express.Router();
 
 //require the controller
-const shoesController = require('../../../controllers/auth');
+const userController = require('../../../controllers/auth');
 
 //handle the post request coming to /api/v1/shoes
-router.post('/signup', shoesController.signup);
+router.post('/signup', userController.signup);
 
 //handle the get request coming to /api/v1/shoes
-router.post('/login', shoesController.login);
+router.post('/login', userController.login);
 
 //export the router
 module.exports = router;
