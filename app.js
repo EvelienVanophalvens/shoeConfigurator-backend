@@ -20,22 +20,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect to DB
-mongoose.connect(process.env.MONGODB);
-const db = mongoose.connection;
+//connect to mongodb
+const credentials = "/etc/secrets/certificate.pem";
+mongoose.connect("mongodb+srv://swear.vqxzx7k.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority", {
+    tlsCertificateKeyFile: credentials,
+});
 
-//check if the connection is successful
-db.on('error', console.error.bind(console, 'connection error:'));
+//check connection 
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Connected to MongoDB!");
+
 
 //import routers
 const shoesRouter = require('./routes/api/v1/shoes');
 const usersRouter = require('./routes/api/v1/users');
-app.use(express.json());
 
 //use the routers
 app.use('/api/v1/shoes',shoesRouter);
 app.use('/api/v1/users', usersRouter);
-
-
+});
 
 module.exports = app;
