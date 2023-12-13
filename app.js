@@ -11,17 +11,10 @@ var app = express();
 
 const cors = require('cors');
 
-//use cors
-app.use(cors());
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 //connect to mongodb
-const credentials = "/etc/secrets/certificate.pem";
+const credentials = "./etc/secrets/certificate.pem";
 mongoose.connect("mongodb+srv://swear.vqxzx7k.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority", {
     tlsCertificateKeyFile: credentials,
 });
@@ -33,6 +26,15 @@ db.once("open", () => {
     console.log("Connected to MongoDB!");
 
 
+
+
+//use cors
+app.use(cors());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 //import routers
 const shoesRouter = require('./routes/api/v1/shoes');
 const usersRouter = require('./routes/api/v1/users');

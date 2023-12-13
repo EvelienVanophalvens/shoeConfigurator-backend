@@ -32,7 +32,20 @@ const getAllShoes = async (req, res) => {
     })
 }
 
+const getShoeById = async (req, res) => {
+    let shoe = await Shoe.findById(req.params.id);
+    res.json({
+        status: 'success',
+        data: [
+            {
+                shoe: shoe
+            }
+        ]
+    })
+}
+
 //export the createShoe function
 module.exports.createShoe = createShoe;
 module.exports.getAllShoes = getAllShoes;
+module.exports.getShoeById = getShoeById;
 
