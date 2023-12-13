@@ -15,7 +15,7 @@ router.post('/', shoesController.createShoe);
 router.get('/',  passport.authenticate('jwt', { session: false }) , shoesController.getAllShoes);
 
 //handle the get requests for id
-router.get('/:id', shoesController.getShoeById);
+router.get('/:id', assport.authenticate('jwt', { session: false }) , shoesController.getShoeById);
 
 //export the router
 module.exports = router;
