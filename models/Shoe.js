@@ -83,7 +83,7 @@ const ShoeSchema = new Schema({
         type: String,
         default: "pending",
     },
-    oderDate: {
+    orderDate: {
         type: Date,
         default: Date.now,
     },
