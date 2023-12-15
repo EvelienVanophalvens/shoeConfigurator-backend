@@ -17,5 +17,7 @@ router.get('/',  passport.authenticate('jwt', { session: false }) , shoesControl
 //handle the get requests for id
 router.get('/:id', passport.authenticate('jwt', { session: false }) , shoesController.getShoeById);
 
+router.patch('/:id', passport.authenticate('jwt', { session: false }) , shoesController.patchShoeById);
+
 //export the router
 module.exports = router;

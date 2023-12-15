@@ -44,8 +44,23 @@ const getShoeById = async (req, res) => {
     })
 }
 
+//patch shoe by id async function
+const patchShoeById = async (req, res) => {
+    let shoe = await Shoe.findById(req.params.id);
+    shoe.status = req.body.status;
+    await shoe.save();
+    res.json({
+        status: 'success',
+        data: [
+            {
+                shoe: shoe
+            }
+        ]
+    })
+}
 //export the createShoe function
 module.exports.createShoe = createShoe;
 module.exports.getAllShoes = getAllShoes;
 module.exports.getShoeById = getShoeById;
+module.exports.patchShoeById = patchShoeById;
 
