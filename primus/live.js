@@ -6,12 +6,12 @@ module.exports.go = (server) => {
           , min: 500 // Number: The minimum delay before we try reconnect.
         }
      });
-
+let intervalId;
     //check if connection, then console.log
  primus.on('connection', (spark) => {
 
       // Send 'ping' every 30 seconds to keep the connection alive
-      const intervalId = setInterval(() => {
+       intervalId = setInterval(() => {
         spark.write('ping');
     }, 30000);
 
