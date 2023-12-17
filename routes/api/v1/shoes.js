@@ -19,5 +19,6 @@ router.get('/:id', passport.authenticate('jwt', { session: false }) , shoesContr
 
 router.patch('/:id', passport.authenticate('jwt', { session: false }) , shoesController.patchShoeById);
 
+router.delete('/:id', passport.authenticate('jwt', { session: false }) , shoesController.removeShoeById);
 //export the router
 module.exports = router;
