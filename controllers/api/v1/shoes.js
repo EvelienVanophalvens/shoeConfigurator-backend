@@ -59,7 +59,7 @@ const patchShoeById = async (req, res) => {
     })
 }
 const removeShoeById = async (req, res) => {
-    let shoe = await Shoe.findByIdAndRemove(req.params.id);
+    let shoe = await Shoe.findOneAndDelete(req.params.id);
     res.json({
         status: 'success',
         data: [
