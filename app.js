@@ -14,7 +14,7 @@ const cors = require('cors');
 
 
 //connect to mongodb
-const credentials = "./etc/secrets/certificate.pem";
+const credentials = "/etc/secrets/certificate.pem";
 mongoose.connect("mongodb+srv://swear.vqxzx7k.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority", {
     tlsCertificateKeyFile: credentials,
 });
