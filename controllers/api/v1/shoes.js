@@ -58,9 +58,21 @@ const patchShoeById = async (req, res) => {
         ]
     })
 }
+const removeShoeById = async (req, res) => {
+    let shoe = await Shoe.findByIdAndRemove(req.params.id);
+    res.json({
+        status: 'success',
+        data: [
+            {
+                shoe: shoe
+            }
+        ]
+    })
+}
 //export the createShoe function
 module.exports.createShoe = createShoe;
 module.exports.getAllShoes = getAllShoes;
 module.exports.getShoeById = getShoeById;
 module.exports.patchShoeById = patchShoeById;
+module.exports.removeShoeById = removeShoeById;
 
