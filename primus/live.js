@@ -25,17 +25,12 @@ module.exports.go = (server) => {
             primus.write(data);
         });
 
-          // Clear the interval when the client disconnects
-          spark.on('end', () => {
-            clearInterval(intervalId);
-        });
-
-
     });
 
     //check if disconnection, then console.log
     primus.on('disconnection', (spark) => {
         console.log('disconnected');
+        clearInterval(intervalId);
     });
 
 
