@@ -1,5 +1,5 @@
 //require the user model
-const User = require('../models/User');
+const User = require('../models/user');
 const passport = require('../passport/passport');
 const jwt = require('jsonwebtoken');
 

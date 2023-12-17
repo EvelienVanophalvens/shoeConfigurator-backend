@@ -9,6 +9,13 @@ module.exports.go = (server) => {
 
     //check if connection, then console.log
  primus.on('connection', (spark) => {
+
+      // Send 'ping' every 30 seconds to keep the connection alive
+      const intervalId = setInterval(() => {
+        spark.write('ping');
+    }, 30000);
+
+
         console.log('connected');
 
         spark.on('data', async (data) => {
@@ -17,6 +24,13 @@ module.exports.go = (server) => {
             // Send data back to all clients
             primus.write(data);
         });
+
+          // Clear the interval when the client disconnects
+          spark.on('end', () => {
+            clearInterval(intervalId);
+        });
+
+
     });
 
     //check if disconnection, then console.log
