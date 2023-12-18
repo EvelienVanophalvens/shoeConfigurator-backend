@@ -32,7 +32,7 @@ const getAllShoes = async (req, res) => {
 }
 
 const getShoeById = async (req, res) => {
-    let shoe = await Shoe.findById(req.params.id);
+    let shoe = await Shoe.findOne({ orderNumber: req.params.id });
     res.json({
         status: 'success',
         data: [
