@@ -19,12 +19,8 @@ let intervalId;
         console.log('connected');
         
         spark.on('data', async (data) => {
-            if (data === 'pong') {
-                console.log('Received pong from client');
-            } else {
                 console.log(data, 'data received');
                 primus.write(data);
-            }
         });
 
     });
