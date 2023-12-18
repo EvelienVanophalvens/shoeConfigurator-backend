@@ -23,7 +23,11 @@ let intervalId;
                 console.log('Received pong from client');
             } else {
                 console.log(data, 'data received');
-                primus.write(data);
+                try {
+                    primus.write(data);
+                } catch (error) {
+                    console.log(error);
+                }
             }
         });
 
