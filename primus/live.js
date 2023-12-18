@@ -13,7 +13,7 @@ let intervalId;
       // Send 'ping' every 30 seconds to keep the connection alive
        intervalId = setInterval(() => {
         primus.write('ping');
-    }, 30000);
+    }, 3000);
 
 
         console.log('connected');
