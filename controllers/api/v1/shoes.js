@@ -6,7 +6,6 @@ const Shoe = require('../../../models/Shoe');
 const createShoe = async (req, res) => {
     let shoe = req.body;
     let newShoe = new Shoe(shoe);
-    newShoe.orderNumber = Math.floor(Math.random() * 1000000);
     newShoe.shoe = shoe;
     await newShoe.save();
     res.json({
