@@ -17,12 +17,14 @@ let intervalId;
 
 
         console.log('connected');
-
+        
         spark.on('data', async (data) => {
-            console.log(data, 'data received');
-
-            // Send data back to all clients
-            primus.write(data);
+            if (data === 'pong') {
+                console.log('Received pong from client');
+            } else {
+                console.log(data, 'data received');
+                primus.write(data);
+            }
         });
 
     });
