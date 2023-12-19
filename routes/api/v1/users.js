@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 //require the controller
-const userController = require('../../../controllers/Auth');
+const userController = require('../../../controllers/auth');
 
 //handle the post request coming to /api/v1/shoes
 router.post('/signup', userController.signup);
