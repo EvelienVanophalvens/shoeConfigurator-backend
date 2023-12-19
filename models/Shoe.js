@@ -31,10 +31,6 @@ const ShoeSchema = new Schema({
         type: String,
         required: true,
     },
-    colorInnerMaterial: {
-        type: String,
-        required: true,
-    },
     innerMaterial: {
         type: String,
         required: true,
