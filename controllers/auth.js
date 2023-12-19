@@ -65,7 +65,7 @@ const login = async (req, res, next) => {
 
 //update password
 const updatePassword = async (req, res, next) => {
-    let user = await User.findById(req.params.id);
+    let user = await User.findById(req.userId);
     if (!user) {
         return res.json({
             status: 'error',
