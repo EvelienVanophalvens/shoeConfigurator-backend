@@ -46,6 +46,13 @@ const getShoeById = async (req, res) => {
 //patch shoe by id async function
 const patchShoeById = async (req, res) => {
     let shoe = await Shoe.findById(req.body.id);
+    if (!shoe) {
+        res.status(404).json({
+            status: 'fail',
+            message: 'No shoe found with this ID',
+        });
+        return;
+    }
     shoe.status = req.body.status;
     await shoe.save();
     res.json({
