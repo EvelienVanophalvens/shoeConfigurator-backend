@@ -45,7 +45,7 @@ const getShoeById = async (req, res) => {
 
 //patch shoe by id async function
 const patchShoeById = async (req, res) => {
-    let shoe = await Shoe.findById(req.params.id);
+    let shoe = await Shoe.findById(req.body.id);
     shoe.status = req.body.status;
     await shoe.save();
     res.json({
@@ -58,7 +58,7 @@ const patchShoeById = async (req, res) => {
     })
 }
 const removeShoeById = async (req, res) => {
-    let shoe = await Shoe.findOneAndDelete(req.params.id);
+    let shoe = await Shoe.findOneAndDelete(req.body.id);
     res.json({
         status: 'success',
         data: [
